@@ -1,23 +1,34 @@
-Parameters for the news extraction tool:
+## Parameters for the news extraction tool:
 - category (str or list) : the category of the news to be extracted
 - news_source(str or list): the news source to be extracted
 
-Default parameters values:
+## Default parameters values:
 - category: "all"
 - news_source: "all"
 
-Examples of usage:
-df = extract_news(config_df, category="global") - Will return a dataframe with all the news sources from the category "global"
+## Examples of usage:
+```python
+df = extract_news(config_df, category="global")
+```
+Will return a dataframe with all the news sources from the category "global"
+``` python
+df = extract_news(config_df, category="global", source="france24")
+```
+Will return a dataframe with all the news from the category "global" and the source "france24"
 
-df = extract_news(config_df, category="global", source="france24") - Will return a dataframe with all the news from the category "global" and the source "france24"
-Important note: Source list (or source string) should include source name for category otherwise fuction will return an empty dataframe
+## Important note:
+Source list (or source string) should include source name for category otherwise fuction will return an empty dataframe
+``` python
+df = extract_news(config_df, category=["global", "politics"], source=["theguardian", "bbc", "nytimes"])
+```
+Will return a dataframe with all the news from the category "global" and "politics" and the sources "theguardian", "bbc" and "nytimes"
+``` python
+df = extract_news(config_df)
+```
+Will return a dataframe with all the news from all the categories and all the sources (it can take up to 5-10 minutes to run)
 
-df = extract_news(config_df, category=["global", "politics"], source=["theguardian", "bbc", "nytimes"]) - Will return a dataframe with all the news from the category "global" and "politics" and the sources "theguardian", "bbc" and "nytimes"
 
-df = extract_news(config_df) - Will return a dataframe with all the news from all the categories and all the sources (it can take up to 5-10 minutes to run)
-
-
-Category parameter
+## Category parameter
 Available news category:
 All categories - "all" (default)
 General news - "general"
@@ -28,138 +39,47 @@ Technology news - "technology"
 News_source parameter
 Available news sources
 All sources - "all" (default)
-For general news:
-- "globalnews"
-- "cbc"
-- "theguardian"
-- "nytimes"
-- "bbc"
-- "aljazeera"
-- "buzzfeed"
-- "defence-blog"
-- "thecipherbrief"
-- "abc_news"
-- "feedburner-global"
-- "npr"
-- "france24"
-- "brookings"
-- "warontherocks"
-- "247newsaroundtheworld"
-- "dailyresearchplot"
-- "wan-ifra"
-- "headlinesoftoday"
-- "quintdaily"
-- "worldnewsera"
-- "articleify"
-- "internewscast"
-- "wow_plus"
-- "theunionjournal"
-- "rightwirereport"
-- "worldweeklynews"
-- "thenexthint"
-- "forsige"
-- "newslanes"
-- "usnn"
-- "latimes"
+All sources - "all" (default)
 
-For political news:
-- "thenation"
-- "npr"
-- "fivethirtyeight"
-- "thehill"
-- "realclearpolitics"
-- "national_review"
-- "politico_picks"
-- "nytimes"
-- "thepoliticalinsider"
-- "frontmoveon"
-- "unz"
-- "fivethirtyeight"
-- "boingboing"
-- "theintercept"
-- "motherjones"
-- "dailysignal"
-- "conservativehome"
-- "politics_uk"
-- "washingtonmonthly"
-- "centerforpolitics"
-- "coloradopols"
-- "sluggerotoole"
-- "leftfootforward"
-- "hughhewitt"
-- "shadowproof"
-- "yallpolitics"
-- "coloradopeakpolitics"
-- "buzzmachine"
-- "gopillinois"
-- "lawandpoliticsofaltondrew"
-- "uncommonthought"
-- "crooksandliars"
-- "democracyparadox"
-- "krpoliticaljunkie"
-- "eyeonglobalpolitics"
-- "politicsguys"
-- "wingsoverscotland"
-- "fitzfile"
-- "unpoliticallycorrect"
-- "garyhasissues"
-
-For financial news:
-- "marketwatch"
-- "reuters"
-- "thestreet"
-- "benzinga"
-- "gfmag"
-- "financial_samurai"
-- "forbes"
-- "money_week"
-- "european_financial_review"
-- "moneymorning"
-- "fortune"
-- "business_financial_post"
-- "mjbizdaily"
-- "insightssuccess"
-- "feedburner-finance"
-- "talkingbiznews"
-- "iotbusinessnews"
-- "businessmole"
-- "smallbiztalks"
-- "guestviral"
-
-For technology news:
-- "techcrunch"
-- "mashable"
-- "gizmodo"
-- "engadget"
-- "techhive"
-- "theverge"
-- "feedburner_oreilly"
-- "findlaw"
-- "apple_insider"
-- "trustedreviews"
-- "computerworld"
-- "technologyreview"
-- "feedburnerthenextweb"
-- "bgr"
-- "datadriveninvestor"
-- "feedburnertechdirt"
-- "extremetech"
-- "techmeme"
-- "siliconangle"
-- "geekwire"
-- "gigaom"
-- "ilounge"
-- "ishir"
-- "techengage"
-- "siliconrepublic"
-- "it_worldcanada"
-- "technewsworld"
-- "itchronicles"
-- "pixel-studios"
-- "afritechmedia"
-- "alicekeeler"
-- "justtotaltech"
-- "waftr"
-- "area19delegate"
-- "feedburnerausdroid-technology"
-- "techmused"
+| General news | Political news | Financial news | Technology news |
+|--------------|----------------|----------------|-----------------|
+| globalnews | thenation | marketwatch | techcrunch |
+| cbc | npr | reuters | mashable |
+| theguardian | fivethirtyeight | thestreet | gizmodo |
+| nytimes | thehill | benzinga | engadget |
+| bbc | realclearpolitics | gfmag | techhive |
+| aljazeera | national_review | financial_samurai | theverge |
+| buzzfeed | politico_picks | forbes | feedburner_oreilly |
+| defence-blog | nytimes | money_week | findlaw |
+| thecipherbrief | thepoliticalinsider | european_financial_review | apple_insider |
+| abc_news | frontmoveon | moneymorning | trustedreviews |
+| feedburner-global | unz | fortune | computerworld |
+| npr | fivethirtyeight | business_financial_post | technologyreview |
+| france24 | boingboing | mjbizdaily | feedburnerthenextweb |
+| brookings | theintercept | insightssuccess | bgr |
+| warontherocks | motherjones | feedburner-finance | datadriveninvestor |
+| 247newsaroundtheworld | dailysignal | talkingbiznews | feedburnertechdirt |
+| dailyresearchplot | conservativehome | iotbusinessnews | extremetech |
+| wan-ifra | politics_uk | businessmole | techmeme |
+| headlinesoftoday | washingtonmonthly | smallbiztalks | siliconangle |
+| quintdaily | centerforpolitics | guestviral | geekwire |
+| worldnewsera | coloradopols | - | gigaom | 
+| articleify | sluggerotoole | - | ilounge |
+| internewscast | leftfootforward | - | ishir |
+| wow_plus | hughhewitt| - | techengage |
+| theunionjournal | shadowproof | - | siliconrepublic |
+| rightwirereport | yallpolitics | - |  it_worldcanada |
+| worldweeklynews | coloradopeakpolitics | - | technewsworld |
+| thenexthint | buzzmachine | - | itchronicles |
+| forsige | gopillinois | - | pixel-studios |
+| newslanes | lawandpoliticsofaltondrew | - | afritechmedia |
+| usnn | uncommonthought | - | alicekeeler |
+| latimes | crooksandliars | - | justtotaltech |
+| - | democracyparadox | - | waftr |
+| - | krpoliticaljunkie | - | area19delegate |
+| - | eyeonglobalpolitics | - | feedburnerausdroid-technology |
+| - | politicsguys | - | techmused |
+| - | wingsoverscotland | - | - |
+| - | fitzfile | - | - | - |
+| - | unpoliticallycorrect | - | - |
+| - | garyhasissues | - | - |
